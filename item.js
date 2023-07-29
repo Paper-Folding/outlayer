@@ -371,35 +371,9 @@ var dashedVendorProperties = {
 };
 
 proto.ontransitionend = function( event ) {
-  // disregard bubbled events from children
-  if ( event.target !== this.element ) {
-    return;
-  }
-  var _transition = this._transn;
-  // get property name of transitioned property, convert to prefix-free
-  var propertyName = dashedVendorProperties[ event.propertyName ] || event.propertyName;
-
-  // remove property that has completed transitioning
-  delete _transition.ingProperties[ propertyName ];
-  // check if any properties are still transitioning
-  if ( isEmptyObj( _transition.ingProperties ) ) {
-    // all properties have completed transitioning
-    this.disableTransition();
-  }
-  // clean style
-  if ( propertyName in _transition.clean ) {
-    // clean up style
-    this.element.style[ event.propertyName ] = '';
-    delete _transition.clean[ propertyName ];
-  }
-  // trigger onTransitionEnd callback
-  if ( propertyName in _transition.onEnd ) {
-    var onTransitionEnd = _transition.onEnd[ propertyName ];
-    onTransitionEnd.call( this );
-    delete _transition.onEnd[ propertyName ];
-  }
-
-  this.emitEvent( 'transitionEnd', [ this ] );
+  this.element.style.opacity = ''
+  // do nothing for this event, cuz this event make masonry layout for two times each time .layout() method is called
+  return;
 };
 
 proto.disableTransition = function() {
@@ -443,10 +417,7 @@ proto.stagger = function( delay ) {
 
 // remove element from DOM
 proto.removeElem = function() {
-  var parent = this.element.parentNode;
-  if ( parent ) {
-    parent.removeChild( this.element );
-  }
+  this.element.parentNode.removeChild( this.element );
   // remove display: none
   this.css({ display: '' });
   this.emitEvent( 'remove', [ this ] );

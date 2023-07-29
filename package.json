@@ -1,6 +1,6 @@
 {
-  "name": "outlayer",
-  "version": "2.1.1",
+  "name": "@paper-folding/outlayer",
+  "version": "2.1.1-hotfix.1",
   "description": "the brains and guts of a layout library",
   "main": "outlayer.js",
   "dependencies": {
@@ -15,12 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/metafizzy/outlayer.git"
+    "url": "https://github.com/Paper-Folding/outlayer.git"
   },
   "bugs": {
     "url": "https://github.com/metafizzy/outlayer/issues"
   },
-  "homepage": "https://github.com/metafizzy/outlayer",
+  "homepage": "https://github.com/Paper-Folding/outlayer",
   "directories": {
     "doc": "docs",
     "example": "examples",
@@ -33,6 +33,6 @@
     "DOM",
     "layout"
   ],
-  "author": "David DeSandro",
+  "author": "Paper Folding",
   "license": "MIT"
 }
