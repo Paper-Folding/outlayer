@@ -1,5 +1,5 @@
 /*!
- * Outlayer v2.1.1-hotfix.2
+ * Outlayer v2.1.1-hotfix.3
  * the brains and guts of a layout library
  * MIT license
  */
@@ -221,13 +221,13 @@ proto.getItemElements = function() {
 /**
  * lays out all items
  * 
- * @param isColumnsChanged you might need to explicit set this parameter to `true` if you are using `columns` option,
+ * @param changedColumns you might need to explicit set this parameter if you are using `columns` option,
  *  under the circumstance that you are sure items' width is surely changed,
- *  so as to notify masonry `columns` option should also be changed.
+ *  set its value to changed columns' count so as to notify masonry that `columns` option should also be changed.
  */
-proto.layout = function(isColumnsChanged = false) {
-  if (isColumnsChanged)
-    this.options.columns = undefined;
+proto.layout = function(changedColumns = 0) {
+  if (changedColumns && changedColumns > 0)
+    this.options.columns = changedColumns;
   this._resetLayout();
   this._manageStamps();
 
