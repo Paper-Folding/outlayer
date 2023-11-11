@@ -1,5 +1,5 @@
 /*!
- * Outlayer v2.1.1-hotfix.3
+ * Outlayer v2.1.1-hotfix.4
  * the brains and guts of a layout library
  * MIT license
  */
@@ -46,7 +46,6 @@
 // ----- vars ----- //
 
 var console = window.console;
-var jQuery = window.jQuery;
 var noop = function() {};
 
 // -------------------------- Outlayer -------------------------- //
@@ -72,11 +71,6 @@ function Outlayer( element, options ) {
     return;
   }
   this.element = queryElement;
-  // add jQuery
-  if ( jQuery ) {
-    this.$element = jQuery( this.element );
-  }
-
   // options
   this.options = utils.extend( {}, this.constructor.defaults );
   this.option( options );
@@ -223,10 +217,13 @@ proto.getItemElements = function() {
  * 
  * @param changedColumns you might need to explicit set this parameter if you are using `columns` option,
  *  under the circumstance that you are sure items' width is surely changed,
- *  set its value to changed columns' count so as to notify masonry that `columns` option should also be changed.
+ *  set its value to changed columns' count so as to notify masonry that `columns` option should also be changed,
+ *  otherwise setting its value to zero results in clear of the option's value to indicate it is under layout responsive mode. 
  */
-proto.layout = function(changedColumns = 0) {
-  if (changedColumns && changedColumns > 0)
+proto.layout = function(changedColumns = undefined) {
+  if (changedColumns === 0)
+    this.options.columns = undefined;
+  else if (changedColumns > 0)
     this.options.columns = changedColumns;
   this._resetLayout();
   this._manageStamps();
@@ -470,7 +467,7 @@ proto._emitCompleteOnItems = function( eventName, items ) {
 };
 
 /**
- * emits events via EvEmitter and jQuery events
+ * emits events via EvEmitter
  * @param {String} type - name of event
  * @param {Event} event - original event
  * @param {Array} args - extra arguments
@@ -479,20 +476,6 @@ proto.dispatchEvent = function( type, event, args ) {
   // add original event to arguments
   var emitArgs = event ? [ event ].concat( args ) : args;
   this.emitEvent( type, emitArgs );
-
-  if ( jQuery ) {
-    // set this.$element
-    this.$element = this.$element || jQuery( this.element );
-    if ( event ) {
-      // create jQuery event
-      var $event = jQuery.Event( event );
-      $event.type = type;
-      this.$element.trigger( $event, args );
-    } else {
-      // just trigger with type if no event available
-      this.$element.trigger( type, args );
-    }
-  }
 };
 
 // -------------------------- ignore & stamps -------------------------- //
@@ -843,11 +826,6 @@ proto.destroy = function() {
   var id = this.element.outlayerGUID;
   delete instances[ id ]; // remove reference to instance by id
   delete this.element.outlayerGUID;
-  // remove data for jQuery
-  if ( jQuery ) {
-    jQuery.removeData( this.element, this.constructor.namespace );
-  }
-
 };
 
 // -------------------------- data -------------------------- //
@@ -888,13 +866,6 @@ Outlayer.create = function( namespace, options ) {
   // -------------------------- declarative -------------------------- //
 
   utils.htmlInit( Layout, namespace );
-
-  // -------------------------- jQuery bridge -------------------------- //
-
-  // make into jQuery plugin
-  if ( jQuery && jQuery.bridget ) {
-    jQuery.bridget( namespace, Layout );
-  }
 
   return Layout;
 };
