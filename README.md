@@ -71,24 +71,6 @@ Get a layout instance from an element.
 var myMasonry = Masonry.data( document.querySelector('.grid') );
 ```
 
-## jQuery plugin
-
-The layout class also works as jQuery plugin.
-
-``` js
-// create Masonry layout class, namespace will be the jQuery method
-var Masonry = Outlayer.create('masonry');
-// rock some jQuery
-$( function() {
-  // .masonry() to initialize
-  var $grid = $('.grid').masonry({
-    // options...
-  });
-  // methods are available by passing a string as first parameter
-  $grid.masonry( 'reveal', elems );
-});
-```
-
 ## RequireJS
 
 To use Outlayer with [RequireJS](http://requirejs.org/), you'll need to set some config.
