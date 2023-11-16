@@ -325,15 +325,10 @@ proto.onotransitionend = function (event) {
     this.ontransitionend(event);
 };
 
-// properties that I munge to make my life easier
-var dashedVendorProperties = {
-    "-webkit-transform": "transform"
-};
-
 proto.ontransitionend = function (event) {
     this.element.style.opacity = "";
-    // do nothing for this event, cuz this event make masonry layout for two times each time .layout() method is called
-    return;
+    this.emitEvent("transitionEnd", [this]);
+    // do nothing more of this event, cuz this event make masonry layout for two times each time .layout() method is called
 };
 
 proto.disableTransition = function () {

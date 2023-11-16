@@ -1,6 +1,6 @@
 {
   "name": "@paper-folding/outlayer",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "the brains and guts of a layout library",
   "main": "src/lib/outlayer.js",
   "dependencies": {
