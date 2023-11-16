@@ -1,6 +1,6 @@
 {
   "name": "@paper-folding/outlayer",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "the brains and guts of a layout library",
   "main": "src/lib/outlayer.js",
   "dependencies": {
@@ -36,5 +36,10 @@
     "layout"
   ],
   "author": "Paper Folding",
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src/lib/item.js",
+    "src/lib/outlayer.js"
+  ]
 }
