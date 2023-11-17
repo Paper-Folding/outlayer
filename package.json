@@ -1,15 +1,17 @@
 {
   "name": "@paper-folding/outlayer",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "the brains and guts of a layout library",
   "main": "src/lib/outlayer.js",
   "dependencies": {
-    "ev-emitter": "^1.0.0",
-    "fizzy-ui-utils": "^2.0.0",
-    "get-size": "^2.0.2"
+    "ev-emitter": "^2.1.2",
+    "fizzy-ui-utils": "^3.0.0",
+    "get-size": "^3.0.0"
   },
   "devDependencies": {
     "desandro-matches-selector": "^2.0.2",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "^3.1.0",
     "vite": "^4.5.0"
   },
@@ -27,6 +29,7 @@
     "test": "test"
   },
   "scripts": {
+    "postinstall": "patch-package",
     "prebuild": "prettier . --write",
     "build": "vite build",
     "test": "vite"

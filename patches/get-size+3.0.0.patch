@@ -1,0 +1,11 @@
+diff --git a/node_modules/get-size/get-size.js b/node_modules/get-size/get-size.js
+index 68e8537..c169fa7 100644
+--- a/node_modules/get-size/get-size.js
++++ b/node_modules/get-size/get-size.js
+@@ -1,5 +1,5 @@
+ /*!
+- * Infinite Scroll v2.0.4
++ * getSize v3.0.0
+  * measure size of elements
+  * MIT license
+  */
