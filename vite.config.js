@@ -10,7 +10,7 @@ export default defineConfig({
     build: {
         lib: {
             entry: resolve(__dirname, "src/lib/outlayer.js"),
-            name: "outlayer",
+            name: "Outlayer",
             fileName: "outlayer",
             formats: ["umd"]
         },
