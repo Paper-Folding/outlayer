@@ -1,9 +1,15 @@
 {
   "name": "@paper-folding/outlayer",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "description": "the brains and guts of a layout library",
-  "main": "src/lib/outlayer.js",
+  "author": "Paper Folding",
+  "license": "MIT",
   "type": "module",
+  "main": "src/lib/outlayer.js",
+  "files": [
+    "dist",
+    "src/lib"
+  ],
   "dependencies": {
     "ev-emitter": "^2.1.2",
     "fizzy-ui-utils": "^3.0.0",
@@ -35,13 +41,5 @@
   "keywords": [
     "DOM",
     "layout"
-  ],
-  "author": "Paper Folding",
-  "license": "MIT",
-  "files": [
-    "dist",
-    "test/qunitjs",
-    "src/lib/item.js",
-    "src/lib/outlayer.js"
   ]
 }

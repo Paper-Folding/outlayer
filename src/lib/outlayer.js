@@ -1,7 +1,7 @@
 import EvEmitter from "ev-emitter";
 import getSize from "get-size";
 import utils from "fizzy-ui-utils";
-import Item from "./item";
+import Item from "./item.js";
 
 // ----- vars ----- //
 

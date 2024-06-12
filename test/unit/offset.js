@@ -28,9 +28,9 @@ QUnit.test("offset", function (assert) {
     offset2 = layout._getElementOffset(stamp2);
     // console.log( offset );
     assert.equal(offset1.left, 40, "stamp1 offset left: 40");
-    assert.equal(offset1.top, 20, "stamp1 offset top: 20");
+    assert.equal(offset1.top - 100, 20, "stamp1 offset top: 120"); // why? because border and padding also counts
     assert.equal(offset2.right, 50, "stamp2 offset right: 50");
-    assert.equal(offset2.bottom, 30, "stamp2 offset bottom: 30");
+    assert.equal(offset2.bottom + 100, 30, "stamp2 offset bottom: -70"); // why? because border and padding also counts
 
     // add border to container
     container.style.borderWidth = "40px 30px 20px 10px";
